@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import TasksList from './TasksList';
-import {useSelector} from 'react-redux';
 import AddButton from './AddButton';
 import Modal1 from './Modal1';
 import Task from '../model/Task';
-import { RootState } from '../store/tasksSlice';
+import {getTasks} from '../customHook/getTasks';
 
 const TodoApp = () => {
   let categories: string[] = ['All', 'Completed', 'UnCompleted'];
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const tasksList:Task[] = useSelector((state: RootState) => state.tasks);
+  // const tasksList: Task[] = useSelector((state: RootState) => state.tasks);
+  const {data} = getTasks();
+  const tasksList = data;
 
   const openModal = (): void => {
     setModalVisible(true);
@@ -33,7 +34,7 @@ const TodoApp = () => {
   const handleSelectCategory = () => {
     switch (selectedCategory) {
       case 'All':
-        shownTask = tasksList;
+        shownTask = tasksList ? tasksList : [];
         break;
 
       case 'Completed':
@@ -51,7 +52,7 @@ const TodoApp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>My TodoList</Text>
+      <Text style={styles.title}>My TodoList..</Text>
       <AddButton openModal={openModal} />
       <Modal1 isModalVisible={isModalVisible} closeModal={closeModal} />
       {/* Categories */}

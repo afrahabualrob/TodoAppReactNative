@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {addTask} from '../store/tasksSlice';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import Task from '../model/Task';
+import {useAddTask} from '../customHook/addTask';
 
 interface formProps {
   closeModal: () => void;
 }
 
 const Form: React.FC<formProps> = ({closeModal}) => {
+  const {addTask} = useAddTask();
   const [task, setTask] = useState({title: '', description: ''});
 
-  const dispatch = useDispatch();
   const generateUniqueId = () => {
     return Math.random().toString(36).substr(2, 9);
   };
@@ -25,7 +24,9 @@ const Form: React.FC<formProps> = ({closeModal}) => {
 
     //add Task to array
     const id: string = generateUniqueId(); // create uniqe id
-    dispatch(addTask({id: id, ...task, completed: false} as Task));
+    // dispatch(addTask({id: id, ...task, completed: false} as Task));
+    let a: Task = {id: id, title: task.title, description: task.description};
+    addTask(a);
 
     //clear input content
     setTask({title: '', description: ''});

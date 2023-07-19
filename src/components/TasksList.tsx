@@ -11,26 +11,24 @@ import {useSelector, useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {deleteTask, updateTask, toggleCompleted} from '../store/tasksSlice';
 import Task from '../model/Task';
-import {RootState} from '../store/tasksSlice';
+import {useDeleteTask} from '../customHook/deleteTask';
 interface taskListProps {
   tasks: Task[];
 }
 
 const TasksList: React.FC<taskListProps> = ({tasks}) => {
+  const {deleteTask} = useDeleteTask();
+
   // const tasksList = useSelector((state: RootState) => state.tasks);
   const dispatch = useDispatch();
 
   const [editingTask, setEditingTask] = useState<Task>({
-    id: '',
+    id: 0,
     title: '',
     description: '',
   });
 
-  const handleDeleteTask = (id: string) => {
-    dispatch(deleteTask({id: id}));
-  };
-
-  const handleUpdateTask = (id: string, title: string, description: string) => {
+  const handleUpdateTask = (id: number, title: string, description: string) => {
     setEditingTask({id, title, description});
   };
 
@@ -40,7 +38,7 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
     dispatch(
       updateTask({id: id, newTitle: title, newDescription: description}),
     );
-    setEditingTask({id: '', title: '', description: ''}); // Exit editing mode
+    setEditingTask({id: 0, title: '', description: ''}); // Exit editing mode
   };
 
   const handleCompleted = (id: string) => {
@@ -92,7 +90,7 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
             name="trash"
             size={23}
             color="#888"
-            onPress={() => handleDeleteTask(item.id)}
+            onPress={() => deleteTask(item.id)}
             style={styles.trashIcon}
           />
         </View>
