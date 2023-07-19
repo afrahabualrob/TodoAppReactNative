@@ -7,20 +7,22 @@ import {
   Pressable,
   TextInput,
 } from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {deleteTask, updateTask, toggleCompleted} from '../store/tasksSlice';
 import Task from '../model/Task';
 import {useDeleteTask} from '../customHook/deleteTask';
+import {useUpdateTask} from '../customHook/updateTask';
+import {useToggle} from '../customHook/toggleCompleted';
 interface taskListProps {
   tasks: Task[];
 }
 
 const TasksList: React.FC<taskListProps> = ({tasks}) => {
   const {deleteTask} = useDeleteTask();
+  const {updateTask} = useUpdateTask();
+  const {toggleTask} = useToggle();
 
-  // const tasksList = useSelector((state: RootState) => state.tasks);
-  const dispatch = useDispatch();
+  console.log('update function', updateTask);
 
   const [editingTask, setEditingTask] = useState<Task>({
     id: 0,
@@ -33,18 +35,14 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
   };
 
   const handleSaveTask = () => {
-    const {id, title, description} = editingTask;
+    updateTask(editingTask);
+    console.log('new id : ', editingTask.id);
+    console.log('new  task: ', editingTask);
 
-    dispatch(
-      updateTask({id: id, newTitle: title, newDescription: description}),
-    );
     setEditingTask({id: 0, title: '', description: ''}); // Exit editing mode
   };
 
-  const handleCompleted = (id: string) => {
-    console.log(id);
-    dispatch(toggleCompleted(id));
-  };
+
 
   const renderRow = ({item}: {item: Task}) => (
     <Pressable
@@ -54,7 +52,7 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
         name="circle"
         size={24}
         color={item.completed ? '#379237' : '#888'}
-        onPress={() => handleCompleted(item.id)}
+        onPress={() => toggleTask(item)}
       />
 
       <View style={styles.rowContent}>
@@ -104,7 +102,7 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
         <FlatList
           data={tasks}
           renderItem={renderRow}
-          keyExtractor={item => item.id}
+          keyExtractor={item => '' + item.id}
           contentContainerStyle={styles.flatListContent}
         />
       </View>
@@ -171,7 +169,7 @@ const styles = StyleSheet.create({
   trashIcon: {
     borderWidth: 0.8,
     borderColor: '#888',
-    borderRadius: 30, // Adjust the value as per your requirement
+    borderRadius: 30,
     padding: 5,
     paddingHorizontal: 10,
   },

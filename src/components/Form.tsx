@@ -23,7 +23,7 @@ const Form: React.FC<formProps> = ({closeModal}) => {
     if (!IsUserAddTask) return;
 
     //add Task to array
-    const id: string = generateUniqueId(); // create uniqe id
+    const id: number = +generateUniqueId(); // create uniqe id
     // dispatch(addTask({id: id, ...task, completed: false} as Task));
     let a: Task = {id: id, title: task.title, description: task.description};
     addTask(a);
