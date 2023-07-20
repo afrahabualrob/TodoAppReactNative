@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoApp from './src/pages/TodoApp';
+import TodoApp from './src/screens/TodoApp';
 import {QueryClient, QueryClientProvider} from 'react-query';
 
 const App = () => {

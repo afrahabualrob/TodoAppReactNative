@@ -1,6 +1,7 @@
 import React from 'react';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import {Pressable, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import styles from '../styles/component/AddButton.style';
 
 interface addButtonProps {
   openModal: () => void;
@@ -16,16 +17,3 @@ const AddButton: React.FC<addButtonProps> = ({openModal}) => {
 };
 
 export default AddButton;
-
-const styles = StyleSheet.create({
-  buttonContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 20,
-  },
-  buttonText: {
-    marginLeft: 8,
-    fontSize: 18,
-    color: '#aaa',
-  },
-});
