@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from 'react-query';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 import axios from 'axios';
 
 export const useAddTask = () => {

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
-import TasksList from './TasksList';
-import AddButton from './AddButton';
-import Modal1 from './Modal1';
-import Task from '../model/Task';
+import TasksList from '../components/TasksList';
+import AddButton from '../components/AddButton';
+import Modal1 from '../components/Modal1';
+import Task from '../interfaces/Task';
 import {getTasks} from '../customHook/getTasks';
 
 const TodoApp = () => {

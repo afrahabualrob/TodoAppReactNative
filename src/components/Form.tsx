@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 import {useAddTask} from '../customHook/addTask';
 
 interface formProps {

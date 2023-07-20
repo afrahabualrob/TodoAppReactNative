@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from 'react-query';
 import axios from 'axios';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 
 export const useToggle = () => {
   const updateTaskMutation = async (updatedTaskData: Partial<Task>) => {

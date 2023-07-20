@@ -1,4 +1,4 @@
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 

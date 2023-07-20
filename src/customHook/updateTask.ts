@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from 'react-query';
 import axios from 'axios';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 
 export const useUpdateTask = () => {
   const updateTaskMutation = async (updatedTaskData: Partial<Task>) => {
@@ -22,14 +22,11 @@ export const useUpdateTask = () => {
 
   const queryClient = useQueryClient();
 
-  const update = useMutation<Task, unknown, Partial<Task>>(
-    updateTaskMutation, 
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries('tasks');
-      },
+  const update = useMutation<Task, unknown, Partial<Task>>(updateTaskMutation, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('tasks');
     },
-  );
+  });
 
   const updateTask = (updatedTaskData: Task) => {
     update.mutate(updatedTaskData);

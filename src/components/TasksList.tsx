@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 import {useDeleteTask} from '../customHook/deleteTask';
 import {useUpdateTask} from '../customHook/updateTask';
 import {useToggle} from '../customHook/toggleCompleted';
@@ -41,8 +41,6 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
 
     setEditingTask({id: 0, title: '', description: ''}); // Exit editing mode
   };
-
-
 
   const renderRow = ({item}: {item: Task}) => (
     <Pressable
