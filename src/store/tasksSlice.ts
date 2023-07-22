@@ -2,72 +2,37 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import Task from '../interfaces/Task';
 
 const tasksList: Task[] = [
-  {id: '1', title: 'Task #11', description: 'This is task 1 ', completed: true},
   {
-    id: '2',
-    title: 'Task 2',
-    description: 'departmental seminars by calling individual',
-    completed: true,
-  },
-  {
-    id: '3',
-    title: 'Task 3',
-    description: 'Plan and prepare the annual budget by',
+    id: 1,
+    title: 'Implement User Authentication',
     completed: false,
+    description: 'Set up user authentication and login functionality.',
   },
   {
-    id: '4',
-    title: 'Task 4',
-    description:
-      'Initiate personnel actions including selecting new employees, conducting performance',
-    completed: true,
-  },
-  {
-    id: '5',
-    title: 'Task 5',
-    description:
-      'Follow up on all delinquent accounts within specified patient alpha ',
+    id: 2,
+    title: 'Create Dashboard Components',
     completed: false,
-  },
-  {id: '01', title: 'Task #1', description: 'description', completed: false},
-  {
-    id: '2d',
-    title: 'Task 2',
-    description: 'Correction of billing errors',
-    completed: true,
+    description: 'Design and develop components for the dashboard.',
   },
   {
-    id: '3fd',
-    title: 'Task 3',
-    description: 'specified patient alpha',
-    completed: true,
-  },
-  {id: '445', title: 'Task 4', description: 'description', completed: false},
-  {
-    id: '553',
-    title: 'Follow up on delinquent accounts',
-    description:
-      'Follow up on all delinquent accounts within specified patient alpha,,Follow up on all delinquent accounts within specified patient alpha,  ',
-    completed: true,
-  },
-  {
-    id: '131',
-    title: 'Task #1',
-    description: 'Correction of billing errors',
+    id: 3,
+    title: 'Optimize Performance',
     completed: false,
-  },
-  {
-    id: '211',
-    title: 'Task 2',
-    description: 'Writing off of unpaid accounts',
-    completed: false,
-  },
-  {
-    id: '35',
-    title: 'Task 3',
     description:
-      'Plan and prepare the annual budget by integrating departmental goals and program plans',
-    completed: true,
+      'Identify and optimize performance bottlenecks in the application.',
+  },
+  {
+    id: 4,
+    title: 'Add Data Visualization',
+    completed: false,
+    description: 'Integrate data visualization charts and graphs.',
+  },
+  {
+    id: 5,
+    title: 'Write End-to-End Tests',
+    completed: false,
+    description:
+      'Create end-to-end tests to ensure overall application functionality.',
   },
 ];
 
@@ -93,7 +58,7 @@ const tasksList: Task[] = [
 //   }
 // };
 
-
+// saveData(tasksList);
 interface TasksState extends Task {}
 
 export const tasksSlice = createSlice({

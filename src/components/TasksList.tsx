@@ -14,16 +14,16 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
   const dispatch = useDispatch();
 
   const [editingTask, setEditingTask] = useState<Task>({
-    id: '',
+    id: 0,
     title: '',
     description: '',
   });
 
-  const handleDeleteTask = (id: string) => {
+  const handleDeleteTask = (id: number) => {
     dispatch(deleteTask({id: id}));
   };
 
-  const handleUpdateTask = (id: string, title: string, description: string) => {
+  const handleUpdateTask = (id: number, title: string, description: string) => {
     setEditingTask({id, title, description});
   };
 
@@ -33,10 +33,10 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
     dispatch(
       updateTask({id: id, newTitle: title, newDescription: description}),
     );
-    setEditingTask({id: '', title: '', description: ''}); // Exit editing mode
+    setEditingTask({id: id, title: '', description: ''}); // Exit editing mode
   };
 
-  const handleCompleted = (id: string) => {
+  const handleCompleted = (id: number) => {
     console.log('completed id', id);
     dispatch(toggleCompleted(id));
   };
@@ -99,7 +99,7 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
         <FlatList
           data={tasks}
           renderItem={renderRow}
-          keyExtractor={item => item.id}
+          keyExtractor={item => String(item.id)}
           contentContainerStyle={styles.flatListContent}
         />
       </View>
