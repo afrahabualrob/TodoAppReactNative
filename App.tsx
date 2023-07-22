@@ -1,8 +1,7 @@
 import React from 'react';
-import TodoApp from './src/components/TodoApp';
+import TodoApp from './src/screens/TodoApp';
 import {Provider} from 'react-redux';
 import store from './src/store/store';
-import FeatchedData from './src/pages/FeatchedData';
 import {QueryClient, QueryClientProvider} from 'react-query';
 
 const App = () => {

@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import TasksList from '../components/TasksList';
+import {useSelector} from 'react-redux';
 import AddButton from '../components/AddButton';
 import ModalContent from '../components/ModalContent';
 import Task from '../interfaces/Task';
-// import {getTasks} from '../customHook/getTasks';
-import styles from '../styles/pages/TodoApp';
+import {RootState} from '../store/tasksSlice';
 
 const TodoApp = () => {
   let categories: string[] = ['All', 'Completed', 'UnCompleted'];
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  // const {data} = getTasks();
-  const tasksList = data ? data : [];
+  const tasksList: Task[] = useSelector((state: RootState) => state.tasks);
 
   const openModal = (): void => {
     setModalVisible(true);
@@ -27,7 +26,8 @@ const TodoApp = () => {
     }, 200);
   };
 
-  //fiteration according category
+  //choose category-----------------------
+
   let shownTask: Task[];
 
   const handleSelectCategory = () => {
@@ -37,11 +37,11 @@ const TodoApp = () => {
         break;
 
       case 'Completed':
-        shownTask = tasksList.filter((task: Task) => task.completed);
+        shownTask = tasksList.filter((task: Task) => task.completed === true);
         break;
 
       case 'UnCompleted':
-        shownTask = tasksList.filter((task: Task) => !task.completed);
+        shownTask = tasksList.filter((task: Task) => task.completed === false);
         break;
       default:
         console.log('Invalid Category');
@@ -51,11 +51,11 @@ const TodoApp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>My TodoList..</Text>
+      <Text style={styles.title}>My TodoList</Text>
       <AddButton openModal={openModal} />
       <ModalContent isModalVisible={isModalVisible} closeModal={closeModal} />
-
       {/* Categories */}
+
       <View style={styles.categories}>
         {categories.map((item: string, index: number) => {
           return (
@@ -79,3 +79,48 @@ const TodoApp = () => {
 };
 
 export default TodoApp;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FAF0E4',
+    paddingVertical: 24,
+  },
+  addButton: {
+    marginBottom: 16,
+    paddingHorizontal: 16,
+  },
+
+  icon: {
+    width: 40,
+    height: 40,
+  },
+
+  title: {
+    fontSize: 32,
+    textAlign: 'center',
+    color: '#FF8551',
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+
+  categories: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    marginTop: 24,
+  },
+  category: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    flexGrow: 1,
+    marginHorizontal: 8,
+    textAlign: 'center',
+    paddingBottom: 8,
+    width: '30%',
+  },
+  selected: {
+    borderBottomWidth: 3,
+    borderBottomColor: '#64CCC5',
+  },
+});
