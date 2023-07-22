@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, Pressable, StyleSheet} from 'react-native';
+import {Text, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
+import styles from '../styles/component/CloseButton.style';
 interface closeButtonProps {
   closeModal: () => void;
 }
@@ -17,13 +17,3 @@ const CloseButton: React.FC<closeButtonProps> = ({closeModal}) => {
 };
 
 export default CloseButton;
-const styles = StyleSheet.create({
-  closeButtonText: {
-    fontSize: 18,
-    color: '#FFF',
-  },
-
-  closeButton: {
-    alignItems: 'flex-end',
-  },
-});

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Modal, StyleSheet} from 'react-native';
+import {View, Modal} from 'react-native';
 import Form from './Form';
 import CloseButton from './CloseButton';
+import styles from '../styles/component/ModalContant.style';
 
 interface modalProps {
   isModalVisible: boolean;
@@ -22,18 +23,3 @@ const ModalContent: React.FC<modalProps> = ({isModalVisible, closeModal}) => {
 };
 
 export default ModalContent;
-
-const styles = StyleSheet.create({
-  modal: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    backgroundColor: 'rgba(100,100,100,0.7)',
-  },
-  inner: {
-    backgroundColor: '#FAF0E4',
-    padding: 24,
-    borderRadius: 8,
-    width: '80%',
-  },
-});
