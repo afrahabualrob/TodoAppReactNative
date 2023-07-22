@@ -5,13 +5,13 @@ const tasksList: Task[] = [
   {
     id: 1,
     title: 'Implement User Authentication',
-    completed: false,
+    completed: true,
     description: 'Set up user authentication and login functionality.',
   },
   {
     id: 2,
     title: 'Create Dashboard Components',
-    completed: false,
+    completed: true,
     description: 'Design and develop components for the dashboard.',
   },
   {
