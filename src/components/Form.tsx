@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addTask} from '../store/tasksSlice';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 
 interface formProps {
   closeModal: () => void;

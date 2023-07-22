@@ -8,7 +8,7 @@ interface modalProps {
   closeModal: () => void;
 }
 
-const Modal1: React.FC<modalProps> = ({isModalVisible, closeModal}) => {
+const ModalContent: React.FC<modalProps> = ({isModalVisible, closeModal}) => {
   return (
     <Modal animationType="slide" transparent={true} visible={isModalVisible}>
       <View style={styles.modal}>
@@ -21,7 +21,7 @@ const Modal1: React.FC<modalProps> = ({isModalVisible, closeModal}) => {
   );
 };
 
-export default Modal1;
+export default ModalContent;
 
 const styles = StyleSheet.create({
   modal: {

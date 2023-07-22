@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import Task from '../model/Task';
+import Task from '../interfaces/Task';
 
 const tasksList: Task[] = [
   {id: '1', title: 'Task #11', description: 'This is task 1 ', completed: true},
@@ -93,7 +93,7 @@ const tasksList: Task[] = [
 //   }
 // };
 
-// saveData(tasksList);
+
 interface TasksState extends Task {}
 
 export const tasksSlice = createSlice({

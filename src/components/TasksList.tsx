@@ -10,14 +10,12 @@ import {
 import {useSelector, useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {deleteTask, updateTask, toggleCompleted} from '../store/tasksSlice';
-import Task from '../model/Task';
-import {RootState} from '../store/tasksSlice';
+import Task from '../interfaces/Task';
 interface taskListProps {
   tasks: Task[];
 }
 
 const TasksList: React.FC<taskListProps> = ({tasks}) => {
-  // const tasksList = useSelector((state: RootState) => state.tasks);
   const dispatch = useDispatch();
 
   const [editingTask, setEditingTask] = useState<Task>({
