@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import TasksList from '../components/TasksList';
 import AddButton from '../components/AddButton';
 import ModalContent from '../components/ModalContent';
