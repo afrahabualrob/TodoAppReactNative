@@ -36,7 +36,7 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
 
     console.log('update : ', id, ' , ', title);
 
-    setEditingTask({id: 0, title: '', description: ''}); // Exit editing mode
+    setEditingTask({id: -1, title: '', description: ''}); // Exit editing mode
   };
 
   const handleCompleted = (id: number) => {
