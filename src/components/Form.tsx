@@ -13,7 +13,11 @@ const Form: React.FC<formProps> = ({closeModal}) => {
 
   const dispatch = useDispatch();
   const generateUniqueId = () => {
-    return Math.random().toString(36).substr(2, 9);
+    const timestamp = new Date().getTime();
+    const randomSuffix = Math.floor(Math.random() * 1000);
+    const uniqueNumber = Number(`${timestamp}${randomSuffix}`);
+
+    return uniqueNumber;
   };
 
   const IsUserAddTask: boolean =
@@ -25,6 +29,8 @@ const Form: React.FC<formProps> = ({closeModal}) => {
 
     //add Task to array
     const id: number = Number(generateUniqueId()); // create uniqe id
+    console.log('New ID : ', generateUniqueId());
+
     dispatch(addTask({id: id, ...task, completed: false} as Task));
 
     //clear input content
