@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {View, FlatList, Text, Pressable, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Task from '../interfaces/Task';
-import {useDeleteTask} from '../customHook/deleteTask';
-import {useUpdateTask} from '../customHook/updateTask';
-import {useToggle} from '../customHook/toggleCompleted';
+import {useDeleteTask} from '../hooks/useDeleteTask';
+import {useUpdateTask} from '../hooks/useUpdateTask';
+import {useToggle} from '../hooks/useToggleCompleted';
 import styles from '../styles/component/TasksList.style';
 interface taskListProps {
   tasks: Task[];
@@ -14,8 +14,6 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
   const {deleteTask} = useDeleteTask();
   const {updateTask} = useUpdateTask();
   const {toggleTask} = useToggle();
-
-  console.log('update function', updateTask);
 
   const [editingTask, setEditingTask] = useState<Task>({
     id: 0,
@@ -29,8 +27,6 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
 
   const handleSaveTask = () => {
     updateTask(editingTask);
-    console.log('new id : ', editingTask.id);
-    console.log('new  task: ', editingTask);
 
     setEditingTask({id: 0, title: '', description: ''}); // Exit editing mode
   };

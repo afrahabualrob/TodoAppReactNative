@@ -4,7 +4,7 @@ import TasksList from '../components/TasksList';
 import AddButton from '../components/AddButton';
 import ModalContent from '../components/ModalContent';
 import Task from '../interfaces/Task';
-import {getTasks} from '../customHook/getTasks';
+import {getTasks} from '../hooks/getTasks';
 import styles from '../styles/screens/TodoApp';
 
 const TodoApp = () => {
@@ -17,11 +17,9 @@ const TodoApp = () => {
 
   const openModal = (): void => {
     setModalVisible(true);
-    console.log('opened....');
   };
 
   const closeModal = (): void => {
-    console.log('closed');
     setTimeout(() => {
       setModalVisible(false);
     }, 200);

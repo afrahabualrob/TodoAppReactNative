@@ -11,7 +11,6 @@ export const useAddTask = () => {
         'https://64494d24e7eb3378ca459179.mockapi.io/Features',
         newTask,
       );
-      console.log('New Task:', newTask);
       return response.data;
     } catch (error) {
       console.error('Error adding task:', error);

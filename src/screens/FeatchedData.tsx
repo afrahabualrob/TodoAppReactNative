@@ -60,9 +60,7 @@ const FeatchedData = () => {
     //   description: 'this is a description...',
     //   isSelected: false,
     // };
-    // console.log('newFeature : ', newFeature);
 
-    // console.log('All Feature : ', data);
 
     addFeatureMutation.mutate();
   };

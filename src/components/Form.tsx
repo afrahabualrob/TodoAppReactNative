@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Pressable, Text, TextInput, View} from 'react-native';
 import Task from '../interfaces/Task';
-import {useAddTask} from '../customHook/addTask';
+import {useAddTask} from '../hooks/useAddTask';
 import styles from '../styles/component/From.style';
 interface formProps {
   closeModal: () => void;
@@ -23,14 +23,12 @@ const Form: React.FC<formProps> = ({closeModal}) => {
     if (!IsUserAddTask) return;
 
     //add Task to array
-    const id: number = +generateUniqueId(); // create uniqe id
-    // dispatch(addTask({id: id, ...task, completed: false} as Task));
+    const id: number = +generateUniqueId();
     let a: Task = {id: id, title: task.title, description: task.description};
     addTask(a);
 
     //clear input content
     setTask({title: '', description: ''});
-    console.log('added....');
     closeModal();
   };
   return (

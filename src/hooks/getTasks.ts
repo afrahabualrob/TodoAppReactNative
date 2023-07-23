@@ -9,8 +9,6 @@ export const getTasks = () => {
         'https://64494d24e7eb3378ca459179.mockapi.io/Features',
       );
 
-      console.log('response.data:', response.data);
-
       return response.data;
     } catch (error) {
       console.error('Error fetching tasks:', error);
