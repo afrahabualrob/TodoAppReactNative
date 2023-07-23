@@ -5,7 +5,7 @@ import AddButton from '../components/AddButton';
 import ModalContent from '../components/ModalContent';
 import Task from '../interfaces/Task';
 import {getTasks} from '../customHook/getTasks';
-import styles from '../styles/pages/TodoApp';
+import styles from '../styles/screens/TodoApp';
 
 const TodoApp = () => {
   let categories: string[] = ['All', 'Completed', 'UnCompleted'];
