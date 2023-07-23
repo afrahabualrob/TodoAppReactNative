@@ -84,7 +84,7 @@ export const tasksSlice = createSlice({
       }
     },
     toggleCompleted: (state, action) => {
-      const id: string = action.payload;
+      const id: number = action.payload;
       return state.map(task =>
         task.id === id ? {...task, completed: !task.completed} : task,
       );
