@@ -33,7 +33,10 @@ const TasksList: React.FC<taskListProps> = ({tasks}) => {
     dispatch(
       updateTask({id: id, newTitle: title, newDescription: description}),
     );
-    setEditingTask({id: id, title: '', description: ''}); // Exit editing mode
+
+    console.log('update : ', id, ' , ', title);
+
+    setEditingTask({id: 0, title: '', description: ''}); // Exit editing mode
   };
 
   const handleCompleted = (id: number) => {
